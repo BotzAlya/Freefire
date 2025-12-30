@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Diamond Store - Pembelian Otomatis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c2461, #1e3799);
+            color: #fff;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #ff9f1a, #ff3838);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 56, 56, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #a5b1c2;
+            margin-bottom: 10px;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.03);
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #ff9f1a;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #dfe6e9;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .feature i {
+            color: #4cd137;
+        }
+
+        .diamond-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .package {
+            background: rgba(30, 55, 153, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .package:hover {
+            transform: translateY(-10px);
+            border-color: #ff9f1a;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .package-header {
+            margin-bottom: 20px;
+        }
+
+        .diamond-icon {
+            font-size: 2.5rem;
+            color: #ff9f1a;
+            margin-bottom: 10px;
+        }
+
+        .diamond-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .diamond-label {
+            color: #a5b1c2;
+            font-size: 1rem;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #4cd137;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #a5b1c2;
+        }
+
+        .buy-button {
+            background: linear-gradient(90deg, #ff9f1a, #ff3838);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .buy-button:hover {
+            background: linear-gradient(90deg, #ff3838, #ff9f1a);
+            box-shadow: 0 0 20px rgba(255, 56, 56, 0.5);
+        }
+
+        .payment-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .payment-section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #ff9f1a;
+            font-size: 2rem;
+        }
+
+        .payment-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background: #ff9f1a;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .step p {
+            color: #a5b1c2;
+            font-size: 0.9rem;
+        }
+
+        .payment-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: 2px solid #ff9f1a;
+        }
+
+        .payment-button {
+            background: linear-gradient(90deg, #4cd137, #44bd32);
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .payment-button:hover {
+            background: linear-gradient(90deg, #44bd32, #4cd137);
+            box-shadow: 0 0 20px rgba(76, 209, 55, 0.5);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a5b1c2;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2rem;
+            }
+            
+            .diamond-packages {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .payment-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4cd137;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .notification.error {
+            background: #ff3838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-fire" style="font-size: 3rem; color: #ff9f1a;"></i>
+                <h1>Free Fire Diamond Store</h1>
+            </div>
+            <p class="tagline">Beli Diamond Free Fire dengan harga terbaik - Pembayaran otomatis dan pengiriman instan!</p>
+        </header>
+
+        <section class="hero-section">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Free Fire Game">
+            </div>
+            <div class="hero-text">
+                <h2>Top Up Diamond Free Fire Sekarang!</h2>
+                <p>Dapatkan Diamond Free Fire dengan mudah dan cepat. Proses pembayaran otomatis dengan pengiriman diamond instan ke akun Free Fire Anda.</p>
+                <p>Kami menyediakan berbagai paket diamond dengan harga terbaik di pasaran. Cukup pilih paket, lakukan pembayaran, dan diamond akan langsung masuk ke akun Anda.</p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <span>Pengiriman Instan</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Aman & Terpercaya</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-headset"></i>
+                        <span>Dukungan Pelanggan 24/7</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <h2 style="text-align: center; margin-bottom: 30px; font-size: 2.2rem; color: #ff9f1a;">Pilih Paket Diamond</h2>
+        <div class="diamond-packages">
+            <!-- Paket 100 Diamond -->
+            <div class="package">
+                <div class="package-header">
+                    <div class="diamond-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="diamond-amount">100</div>
+                    <div class="diamond-label">Diamond Free Fire</div>
+                </div>
+                <div class="price">RM5</div>
+                <p>Harga terbaik untuk 100 Diamond</p>
+                <button class="buy-button" data-amount="100" data-price="5">Beli Sekarang</button>
+            </div>
+
+            <!-- Paket 200 Diamond -->
+            <div class="package">
+                <div class="package-header">
+                    <div class="diamond-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="diamond-amount">200</div>
+                    <div class="diamond-label">Diamond Free Fire</div>
+                </div>
+                <div class="price">RM7</div>
+                <p>Paket hemat untuk 200 Diamond</p>
+                <button class="buy-button" data-amount="200" data-price="7">Beli Sekarang</button>
+            </div>
+
+            <!-- Paket 1000 Diamond -->
+            <div class="package">
+                <div class="package-header">
+                    <div class="diamond-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="diamond-amount">1000</div>
+                    <div class="diamond-label">Diamond Free Fire</div>
+                </div>
+                <div class="price">RM120</div>
+                <p>Paket maksimal dengan harga spesial</p>
+                <button class="buy-button" data-amount="1000" data-price="120">Beli Sekarang</button>
+            </div>
+        </div>
+
+        <section class="payment-section">
+            <h2>Proses Pembayaran Otomatis</h2>
+            
+            <div class="payment-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Pilih Paket</h3>
+                    <p>Pilih paket diamond yang ingin Anda beli</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Masukkan Data</h3>
+                    <p>Masukkan ID Free Fire dan metode pembayaran</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Bayar Otomatis</h3>
+                    <p>Lakukan pembayaran dengan metode pilihan Anda</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Diamond Dikirim</h3>
+                    <p>Diamond akan dikirim otomatis ke akun Anda</p>
+                </div>
+            </div>
+
+            <div class="payment-form">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #ff9f1a;">Form Pembelian Diamond</h3>
+                <div class="form-group">
+                    <label for="player-id">ID Free Fire</label>
+                    <input type="text" id="player-id" placeholder="Masukkan ID Free Fire Anda">
+                </div>
+                <div class="form-group">
+                    <label for="player-server">Server Free Fire</label>
+                    <select id="player-server">
+                        <option value="asia">Asia</option>
+                        <option value="europe">Eropa</option>
+                        <option value="america">Amerika</option>
+                        <option value="middle-east">Timur Tengah</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="package-select">Pilih Paket Diamond</label>
+                    <select id="package-select">
+                        <option value="100">100 Diamond - RM5</option>
+                        <option value="200">200 Diamond - RM7</option>
+                        <option value="1000">1000 Diamond - RM120</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Metode Pembayaran</label>
+                    <select id="payment-method">
+                        <option value="tng">Touch 'n Go</option>
+                        <option value="grabpay">GrabPay</option>
+                        <option value="boost">Boost</option>
+                        <option value="bank-transfer">Transfer Bank</option>
+                        <option value="credit-card">Kartu Kredit</option>
+                    </select>
+                </div>
+                <button class="payment-button" id="process-payment">
+                    <i class="fas fa-lock"></i> Proses Pembayaran Otomatis
+                </button>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2023 Free Fire Diamond Store. Semua hak dilindungi.</p>
+            <p>Website ini tidak berafiliasi dengan Garena Free Fire atau Garena International.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>support@freefirediamond.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+60 12-345 6789</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Buka 24/7</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Notifikasi sistem
+        function showNotification(message, isError = false) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification' + (isError ? ' error' : '');
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 5000);
+        }
+
+        // Tangani klik tombol beli pada paket
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const amount = this.getAttribute('data-amount');
+                const price = this.getAttribute('data-price');
+                
+                // Set nilai pada form pembelian
+                document.getElementById('package-select').value = amount;
+                
+                // Scroll ke form pembelian
+                document.querySelector('.payment-form').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                showNotification(`Paket ${amount} Diamond (RM${price}) telah dipilih! Silakan lengkapi form pembelian.`);
+            });
+        });
+
+        // Proses pembayaran
+        document.getElementById('process-payment').addEventListener('click', function() {
+            const playerId = document.getElementById('player-id').value;
+            const server = document.getElementById('player-server').value;
+            const packageSelect = document.getElementById('package-select');
+            const packageValue = packageSelect.value;
+            const packageText = packageSelect.options[packageSelect.selectedIndex].text;
+            const paymentMethod = document.getElementById('payment-method').value;
+            
+            // Validasi input
+            if (!playerId) {
+                showNotification('Harap masukkan ID Free Fire Anda!', true);
+                return;
+            }
+            
+            if (!/^\d+$/.test(playerId)) {
+                showNotification('ID Free Fire harus berupa angka!', true);
+                return;
+            }
+            
+            // Simulasi proses pembayaran
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses Pembayaran...';
+            this.disabled = true;
+            
+            // Simulasi delay proses pembayaran
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-check"></i> Pembayaran Berhasil!';
+                
+                // Tampilkan notifikasi sukses
+                showNotification(`Pembelian ${packageText} berhasil! Diamond akan dikirim ke ID ${playerId} (Server: ${server}) dalam 1-5 menit. Terima kasih!`);
+                
+                // Reset form setelah beberapa detik
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-lock"></i> Proses Pembayaran Otomatis';
+                    this.disabled = false;
+                    document.getElementById('player-id').value = '';
+                }, 3000);
+            }, 2000);
+        });
+
+        // Update pilihan paket saat berubah
+        document.getElementById('package-select').addEventListener('change', function() {
+            const packageText = this.options[this.selectedIndex].text;
+            showNotification(`Paket berubah menjadi: ${packageText}`);
+        });
+
+        // Efek hover untuk paket diamond
+        document.querySelectorAll('.package').forEach(package => {
+            package.addEventListener('mouseenter', function() {
+                const amount = this.querySelector('.diamond-amount').textContent;
+                this.querySelector('.diamond-icon').style.transform = 'scale(1.2) rotate(10deg)';
+            });
+            
+            package.addEventListener('mouseleave', function() {
+                this.querySelector('.diamond-icon').style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body>
+</html>
